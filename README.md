@@ -1,4 +1,9 @@
-###Introduction###
+##Introduction##
+
+
+
+
+
 The Morse Code Beacon project uses an Arduino to transmit messages via Morse code using an LED or buzzer. This project is ideal for learning the basics of electronics, communication systems, and programming. You can transmit predefined messages in Morse code, which consists of a series of dots (short signals) and dashes (long signals). The project offers flexibility for customization and is perfect for educational or signaling purposes.
 
 Features
