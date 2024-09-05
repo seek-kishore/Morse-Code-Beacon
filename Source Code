@@ -1,0 +1,50 @@
+// Pin where the LED or buzzer is connected
+int ledPin = 13;
+
+// Time delays for Morse code (in milliseconds)
+int dotTime = 200;    // Duration of a dot
+int dashTime = 600;   // Duration of a dash
+int charGap = 600;    // Gap between characters
+int wordGap = 1400;   // Gap between words
+
+// Morse code patterns for characters (dots = 0, dashes = 1)
+const String morseCode[] = {
+  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---",  // A-J
+  "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-",   // K-T
+  "..-", "...-", ".--", "-..-", "-.--", "--..",                         // U-Z
+  "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----." // 0-9
+};
+
+// Function to blink LED or sound buzzer for dots and dashes
+void blinkMorse(char signal) {
+  if (signal == '.') {
+    digitalWrite(ledPin, HIGH);
+    delay(dotTime);
+  } else if (signal == '-') {
+    digitalWrite(ledPin, HIGH);
+    delay(dashTime);
+  }
+  digitalWrite(ledPin, LOW);
+  delay(dotTime);  // Gap between parts of a character
+}
+
+// Function to send Morse code for a letter
+void sendMorse(String code) {
+  for (int i = 0; i < code.length(); i++) {
+    blinkMorse(code[i]);
+  }
+  delay(charGap);  // Gap between characters
+}
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Send "SOS" in Morse code (... --- ...)
+  sendMorse("...");
+  sendMorse("---");
+  sendMorse("...");
+  
+  delay(wordGap);  // Gap between words
+}
