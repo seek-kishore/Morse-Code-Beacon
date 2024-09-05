@@ -1,1 +1,4 @@
-
+A 'Morse Code Beacon' is a device that transmits pre-defined messages using Morse code, a system of dots and dashes representing letters and numbers. 
+This beacon can signal information visually (using lights) or audibly (using sound). 
+The **need for such a project** lies in its simplicity and educational value, making it a great introduction to electronics, programming, and communication systems. 
+It's often used in scenarios like distress signaling, learning Morse code, or understanding basic digital communication methods.
