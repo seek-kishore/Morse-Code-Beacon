@@ -32,61 +32,6 @@ Usage
 Set up the circuit as per the Circuit Diagram.
 Upload the code to the Arduino.
 The LED (or buzzer) will transmit the default Morse code message ("SOS").
-Customization
-To change the Morse code message, modify the loop() function in the Arduino sketch:
-
-cpp
-Copy code
-void loop() {
-  sendMorse("HELLO");  // Replace "HELLO" with your message
-  delay(wordGap);
-}
-You can also adjust the timing of the signals by modifying the dotTime, dashTime, charGap, and wordGap variables.
-
-Code Example
-cpp
-Copy code
-int ledPin = 13;
-int dotTime = 200;   
-int dashTime = 600;  
-int charGap = 600;  
-int wordGap = 1400;
-
-const String morseCode[] = {
-  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", 
-  "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-",   
-  "..-", "...-", ".--", "-..-", "-.--", "--..", "-----", ".----", "..---", 
-  "...--", "....-", ".....", "-....", "--...", "---..", "----."
-};
-
-void blinkMorse(char signal) {
-  if (signal == '.') {
-    digitalWrite(ledPin, HIGH);
-    delay(dotTime);
-  } else if (signal == '-') {
-    digitalWrite(ledPin, HIGH);
-    delay(dashTime);
-  }
-  digitalWrite(ledPin, LOW);
-  delay(dotTime);
-}
-
-void sendMorse(String code) {
-  for (int i = 0; i < code.length(); i++) {
-    blinkMorse(code[i]);
-  }
-  delay(charGap);
-}
-
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
-  sendMorse("SOS");
-  delay(wordGap);
-}
-Future Enhancements
 Add buttons to input custom messages.
 Implement an LCD display to show the current message.
 
